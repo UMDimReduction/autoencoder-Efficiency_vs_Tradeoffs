@@ -47,7 +47,7 @@ The ``requirements.txt`` file contains python packages for reproducing all model
 * Windows 10/11 (*also can be reproduced using any linux machine. However, the package requirements needs to be adjusted*)
 * GPUs (***PyTorch** and **TensorFlow** are created using gpu models*)
 
-####Installation steps:
+#### Installation steps:
 * create new env: ``conda create -name autoencoder python=3.7 -y``
 * activate env: ``conda activate autoencoder``
 * open the directory and install the **``requirements.txt``**: ``pip install -r requirements.txt``
