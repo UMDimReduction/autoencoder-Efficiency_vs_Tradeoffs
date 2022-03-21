@@ -155,14 +155,14 @@ class IWAE:
         dummy_vec = T.vector(dtype=theano.config.floatX)
 
         if model_type in ['vae', 'VAE']:
-            print "Training a VAE"
+            print ("Training a VAE")
             return collections.OrderedDict([(
                                              param,
                                              T.grad(T.sum(log_ws)/T.cast(num_samples, log_ws.dtype), param)
                                             )
                                             for param in self.params])
         else:
-            print "Training an IWAE"
+            print ("Training an IWAE")
             return collections.OrderedDict([(
                                              param,
                                              theano.clone(
@@ -228,7 +228,7 @@ def get_samples(model, num_samples, seed=123):
 
 
 def measure_marginal_log_likelihood(model, dataset, subdataset, seed=123, minibatch_size=20, num_samples=50):
-    print "Measuring {} log likelihood".format(subdataset)
+    print ("Measuring {} log likelihood".format(subdataset))
     srng = utils.srng(seed)
     test_x = dataset.data[subdataset]
     n_examples = test_x.get_value(borrow=True).shape[0]
@@ -247,7 +247,7 @@ def measure_marginal_log_likelihood(model, dataset, subdataset, seed=123, miniba
 
     pbar = progressbar.ProgressBar(maxval=num_minibatches).start()
     sum_of_log_likelihoods = 0.
-    for i in xrange(num_minibatches):
+    for i in range(num_minibatches):
         summand = get_log_marginal_likelihood(i)
         sum_of_log_likelihoods += summand
         pbar.update(i)

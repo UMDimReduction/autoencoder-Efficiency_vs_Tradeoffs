@@ -5,7 +5,7 @@ import progressbar
 
 
 def train(model, dataset, optimizer, minibatch_size, n_epochs, srng, **kwargs):
-    print "training for {} epochs with {} learning rate".format(n_epochs, optimizer.learning_rate)
+    print ("training for {} epochs with {} learning rate".format(n_epochs, optimizer.learning_rate))
     num_minibatches = dataset.get_n_examples('train') / minibatch_size
 
     index = T.lscalar('i')
@@ -17,9 +17,9 @@ def train(model, dataset, optimizer, minibatch_size, n_epochs, srng, **kwargs):
     train_step = theano.function([index], None, updates=updates)
 
     pbar = progressbar.ProgressBar(maxval=n_epochs*num_minibatches).start()
-    for j in xrange(n_epochs):
-        for i in xrange(num_minibatches):
+    for j in range(n_epochs):
+        for i in range(int(num_minibatches)):
             train_step(i)
-            pbar.update(j*num_minibatches+i)
+            pbar.update(j*int(num_minibatches)+i)
     pbar.finish()
     return model

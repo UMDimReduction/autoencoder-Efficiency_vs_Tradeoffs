@@ -6,7 +6,7 @@ import utils
 import config
 
 import os
-import cPickle as pkl
+import pickle as pkl
 import argparse
 import numpy as np
 
@@ -18,7 +18,7 @@ def save_checkpoint(directory_name, i, model, optimizer, srng):
         with open(filename_to_save, "wb") as f:
             pkl.dump([model, optimizer, srng.rstate], f, protocol=pkl.HIGHEST_PROTOCOL)
     except:
-        print "Failed to write to file {}".format(filename_to_save)
+        print ("Failed to write to file {}".format(filename_to_save))
 
 
 def load_checkpoint(directory_name, i):
@@ -64,14 +64,14 @@ def post_experiment(directory_name, dataset, model):
 
     with open(os.path.join(directory_name, "test_log_likelihood_{}_samples.txt".format(num_samples)), "w") as f:
         f.write(str(marginal_log_likelihood))
-    print marginal_log_likelihood
+    print (marginal_log_likelihood)
 
     marginal_log_likelihood = iwae.measure_marginal_log_likelihood(model=model, dataset=dataset,
                                                                    subdataset="train", num_samples=num_samples)
 
     with open(os.path.join(directory_name, "train_log_likelihood_{}_samples.txt".format(num_samples)), "w") as f:
         f.write(str(marginal_log_likelihood))
-    print marginal_log_likelihood
+    print (marginal_log_likelihood)
 
     variances = iwae.get_units_variances(model, dataset)
     for i, var in enumerate(variances):
@@ -88,7 +88,7 @@ def post_experiment(directory_name, dataset, model):
 
     with open(os.path.join(directory_name, "test_log_likelihood_{}_samples_dead_units_removed.txt".format(num_samples)), "w") as f:
         f.write(str(marginal_log_likelihood))
-    print marginal_log_likelihood
+    print (marginal_log_likelihood)
 
 
 def directory_to_store(**kwargs):
@@ -128,7 +128,7 @@ def training_experiment(directory_name, latent_units, hidden_units_q, hidden_uni
     if checkpoint >= 0:
         loaded_checkpoint, model, optimizer, srng = load_checkpoint(directory_name, checkpoint)
         if loaded_checkpoint == -1:
-            print "Unable to load checkpoint {} from {}, starting the experiment from the beginning".format(checkpoint, directory_name)
+            print ("Unable to load checkpoint {} from {}, starting the experiment from the beginning".format(checkpoint, directory_name))
 
     if loaded_checkpoint < 0:
         model, optimizer, srng = checkpoint0(dataset)
