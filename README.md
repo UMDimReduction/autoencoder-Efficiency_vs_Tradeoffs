@@ -13,7 +13,7 @@ The reproduction is still **ongoing**. Please refer the following logs for curre
 
 ## Overview
 This repository introduces the paper **"A Comprehensive Study of Auto-Encoders for
-Anomaly Detection: Efficiency and Trade-Offs"** by **[Asif Ahmed Neloy](https://aaneloy.ca/)** and **[Dr. Max Turgeon](https://www.maxturgeon.ca/)**.
+Anomaly Detection: Efficiency and Trade-Offs"** by **[Asif Ahmed Neloy](https://aaneloy.github.io/)** and **[Dr. Max Turgeon](https://www.maxturgeon.ca/)**.
 
 
 The following autonencoders are reproduced in this repository:
