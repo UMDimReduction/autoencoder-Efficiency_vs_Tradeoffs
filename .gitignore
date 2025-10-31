@@ -1,6 +1,7 @@
 # Data directories
 data/
 datasets/
+checkpoints/
 
 # Results and outputs (optional - uncomment to track)
 # results/
