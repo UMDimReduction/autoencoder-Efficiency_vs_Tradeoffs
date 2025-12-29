@@ -179,7 +179,7 @@ $$L_{DAE}(\theta, \phi) = \frac{1}{n} \sum_{i=1}^{n} \left( x^{(i)} - f_\theta(g
 
 ### SAE (Eq. 2)
 
-$$\tilde{X} = H_{W,b}(X) \approx X + \lambda \cdot \text{sparsity\_penalty}$$
+$$\tilde{X} = H_{W,b}(X) \approx X + \lambda \cdot S_{penalty}$$
 
 ### CAE (Eq. 3-4)
 
